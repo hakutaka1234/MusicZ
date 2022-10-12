@@ -1,8 +1,8 @@
 {
     "name": "Telethon Music Bot",
     "description": "Music allow you to stream music trought the telegram voice chat feature Based on Telethon.",
-    "keywords": ["Zaid", "Zaid-Vc-Player", "music", "voice chat", "telegram", "Yukki", "Yukki Music", "Private Music", "telethon"],
-    "repository": "https://github.com/ITZ-ZAID/Telethon-Music",
+    "keywords": ["Khuntul", "Khuntul-Vc-Player", "music", "voice chat", "telegram", "Yukki", "Yukki Music", "Private Music", "telethon"],
+    "repository": "https://github.com/hakutaka1234/MusicZ",
   "stack": "container",
     "env": {
         "STRING_SESSION": {
@@ -17,22 +17,22 @@
         "SUPPORT": {
             "description": "Fill there your group username else leave",
             "required": false,
-            "value": "TheSupportChat"
+            "value": "kunthulsupport"
         },
         "CHANNEL": {
             "description": "Fill there your Channel username else leave",
             "required": false,
-            "value": "TheUpdatesChannel"
+            "value": "alivenotalliance"
         },
         "BOT_USERNAME": {
             "description": "Fill there your bot username",
             "required": false,
-            "value": "Zaid2_Robot"
+            "value": "HakutakaRobot"
         },
         "ASSISTANT_ID": {
             "description": "Fill there your Assistant id",
             "required": true,
-            "value": "1669178360"
+            "value": "1781998876"
         },
         "BOT_TOKEN": {
             "description": "fill with your bot token get from @BotFather on telegram",
