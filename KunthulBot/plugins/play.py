@@ -28,7 +28,7 @@ from youtubesearchpython import VideosSearch
 fotoplay = "https://telegra.ph/file/b6402152be44d90836339.jpg"
 ngantri = "https://telegra.ph/file/b6402152be44d90836339.jpg"
 from KunthulBot import call_py, KunthulBot, client as Client
-owner = "1669178360"
+owner = "1954780613"
 from KunthulBot.helpers.yt_dlp import bash
 from KunthulBot.helpers.chattitle import CHAT_TITLE
 from KunthulBot.helpers.queues import (
@@ -127,7 +127,7 @@ async def _(event):
      await event.delete()
 
 btnn =[
-    [Button.url("sᴜᴘᴘᴏʀᴛ ⚙️", url=f"t.me/{Config.SUPPORT}"), Button.url("cʜᴀɴɴᴇʟ 🇮🇳", url=f"t.me/{Config.CHANNEL}")],
+    [Button.url("sᴜᴘᴘᴏʀᴛ", url=f"t.me/{Config.SUPPORT}"), Button.url("cʜᴀɴɴᴇʟ", url=f"t.me/{Config.CHANNEL}")],
     [Button.inline("cʟᴏꜱᴇ 🗑️", data="cls")]]
 
 
@@ -150,14 +150,14 @@ async def play(event):
         or not replied
         and not title
     ):
-        return await event.client.send_file(chat_id, Config.CMD_IMG, caption="**Give Me Your Query Which You want to Play**\n\n **Example**: `/play Nira Ishq Bass boosted`", buttons=btnn)
+        return await event.client.send_file(chat_id, Config.CMD_IMG, caption="**Beri Saya Pertanyaan Anda Yang Ingin Anda Mainkan**\n\n **Contoh**: `/play Lingsir Wengi`", buttons=btnn)
     elif replied and not replied.audio and not replied.voice or not replied:
-        botman = await event.reply("**🔄 Processing Query... Please Wait!**")
+        botman = await event.reply("**Sedang Di Proses...**")
         query = event.text.split(maxsplit=1)[1]
         search = ytsearch(query)
         if search == 0:
             await botman.edit(
-                "**Can't Find Song** Try searching with More Specific Title"
+                "**Tidak Menemukan Lagu** Coba Gunakan Judul Untuk Mencarinya"
             )     
         else:
             songname = search[0]
@@ -175,7 +175,7 @@ async def play(event):
                 await botman.edit(f"`{ytlink}`")
             elif chat_id in QUEUE:
                 pos = add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
-                caption = f"⌛ **Added to Queue at** #{pos}\n\n💡 **Title:** [{songname}]({url})\n**⏰ Duration:** `{duration}`\n👥 **Requested By:** {from_user}"
+                caption = f"⌛ **Ditambahkan ke Antrian di** #{pos}\n\n💡 **Judul:** [{songname}]({url})\n**⏰ Durasi:** `{duration}`\n👥 **Diminta oleh:** {from_user}"
                 await botman.delete()
                 await event.client.send_file(chat_id, thumb, caption=caption, buttons=btnn)
             else:
@@ -188,7 +188,7 @@ async def play(event):
                         stream_type=StreamType().pulse_stream,
                     )
                     add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
-                    caption = f"📡 **Started Streaming** 💡\n\n💡 **Title:** [{songname}]({url})\n**⏰ Duration:** `{duration}`\n👥 **Requested By:** {from_user}"
+                    caption = f"📡 **Memulai Streaming** 💡\n\n💡 **Judul:** [{songname}]({url})\n**⏰ Durasi:** `{duration}`\n👥 **Diminta Oleh:** {from_user}"
                     await botman.delete()
                     await event.client.send_file(chat_id, thumb, caption=caption, buttons=btnn)
                 except Exception as ep:
@@ -205,7 +205,7 @@ async def play(event):
             songname = "Voice Note"
         if chat_id in QUEUE:
             pos = add_to_queue(chat_id, songname, dl, link, "Audio", 0)
-            caption = f"⌛ **Added to Queue at** #{pos}\n\n**💡 Title:** [{songname}]({link})\n👥 **Requested By:** {from_user}"
+            caption = f"⌛ **Ditambahkan ke Antrian di** #{pos}\n\n**💡 Judul:** [{songname}]({link})\n👥 **Diminta Oleh:** {from_user}"
             await event.client.send_file(chat_id, ngantri, caption=caption, buttons=btnn)
             await botman.delete()
         else:
@@ -218,7 +218,7 @@ async def play(event):
                     stream_type=StreamType().pulse_stream,
                 )
                 add_to_queue(chat_id, songname, dl, link, "Audio", 0)
-                caption = f"📡 **Started Streaming** 💡\n\n💡 **Title:** [{songname}]({link})\n👥 **Requested By:** {from_user}"
+                caption = f"📡 **Memulai Streaming** 💡\n\n💡 **Judul:** [{songname}]({link})\n👥 **Di Tambahkan Oleh:** {from_user}"
                 await event.client.send_file(chat_id, fotoplay, caption=caption, buttons=btnn)
                 await botman.delete()
             except Exception as ep:
@@ -238,11 +238,11 @@ async def vc_end(event, perm):
         try:
             await call_py.leave_group_call(chat_id)
             clear_queue(chat_id)
-            await event.reply("**Streaming Ended**")
+            await event.reply("**Streaming Telah Di Matikan**")
         except Exception as e:
             await event.reply(f"**ERROR:** `{e}`")
     else:
-        await event.reply("**Ntg is Streaming**")
+        await event.reply("**Tidak Ada Streaming**")
 
 
 
@@ -453,7 +453,7 @@ async def leavevc(event, perm):
             await call_py.leave_group_call(chat_id)
         except (NotInGroupCallError, NoActiveGroupCall):
             pass
-        await xnxx.edit("**Left the voice chat** `{}`".format(str(event.chat_id)))
+        await xnxx.edit("**Turun Dari Obrolan Suara** `{}`".format(str(event.chat_id)))
     else:
         await xnxx.edit(f"**Sorry {owner} not on Voice Chat**")
 
@@ -466,7 +466,7 @@ async def vc_skip(event, perm):
     if len(event.text.split()) < 2:
         op = await skip_current_song(chat_id)
         if op == 0:
-            await event.reply("**Nothing Is Streaming**")
+            await event.reply("**Tidak Ada Streamingnya**")
         elif op == 1:
             await event.reply("empty queue, leave voice chat", 10)
         else:
